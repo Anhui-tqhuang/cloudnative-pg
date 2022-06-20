@@ -172,8 +172,10 @@ var _ = Describe("PostgreSQL status real", func() {
 	defer GinkgoRecover()
 
 	var list PostgresqlStatusList
-	err = json.NewDecoder(f).Decode(&list)
-	Expect(err).ToNot(HaveOccurred())
+	It("can parse the JSON status list", func() {
+		err = json.NewDecoder(f).Decode(&list)
+		Expect(err).ToNot(HaveOccurred())
+	})
 
 	Context("when sorted", func() {
 		sort.Sort(&list)
