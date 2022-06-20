@@ -103,7 +103,7 @@ func GetBackupList(
 	barmanConfiguration *v1.BarmanObjectStoreConfiguration,
 	serverName string,
 	env []string,
-) (*catalog.Catalog, error) {
+) (catalog.Catalog, error) {
 	options := []string{"--format", "json"}
 
 	if barmanConfiguration.EndpointURL != "" {
@@ -139,5 +139,5 @@ func GetBackupList(
 		return nil, err
 	}
 
-	return &backupList, nil
+	return backupList, nil
 }
